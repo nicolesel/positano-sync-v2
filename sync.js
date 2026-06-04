@@ -11,7 +11,7 @@ const CACHE_FILE = 'stock_cache.json';
 
 let mapeo = fs.existsSync(MAPEO_FILE) ? JSON.parse(fs.readFileSync(MAPEO_FILE, 'utf8')) : {};
 let cacheData = fs.existsSync(CACHE_FILE) ? JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8')) : null;
-let stockCache = cacheData ? cacheData.stock : null;
+let stockCache = cacheData ? (cacheData.stock || cacheData) : null;
 let runCount = cacheData ? (cacheData.runCount || 0) : 0;
 let mlToken = '';
 
@@ -51,6 +51,7 @@ async function main() {
 
       if(stockCache !== null) {
         const stockAnterior = stockCache ? stockCache[key] : undefined;
+        // fix: usar stockCache directo ya que es el objeto stock
         if(stockAnterior !== undefined && stockAnterior !== stockActual) {
           const color = ((v.values&&v.values[0]&&v.values[0].es)||'Unico');
           const mlId = v.sku && mapeo[v.sku+'_'+color];
