@@ -10,9 +10,7 @@ const MAPEO_FILE = 'mapeo.json';
 const CACHE_FILE = 'stock_cache.json';
 
 let mapeo = fs.existsSync(MAPEO_FILE) ? JSON.parse(fs.readFileSync(MAPEO_FILE, 'utf8')) : {};
-let stockCache = fs.existsSync(CACHE_FILE) ? JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8')) : {};
 let mlToken = '';
-let runCount = stockCache._runCount || 0;
 
 async function renovarTokenML() {
   const { data } = await axios.post('https://api.mercadolibre.com/oauth/token', {
@@ -39,7 +37,16 @@ async function main() {
   const products = await fetchAllProducts();
   console.log('Productos:', products.length);
 
-  const newCache = { _runCount: runCount + 1 };
+  // Leer cache anterior
+  let stockCache = null;
+  try {
+    if(fs.existsSync(CACHE_FILE)) {
+      const raw = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
+      if(raw && raw.v === 2) stockCache = raw.data;
+    }
+  } catch(e) {}
+
+  const newCache = {};
 
   // TN -> ML
   for(const p of products) {
@@ -48,26 +55,24 @@ async function main() {
       const stockActual = parseInt(v.stock)||0;
       newCache[key] = stockActual;
 
-      if(runCount > 0) {
-        const stockAnterior = (stockCache && typeof stockCache === 'object') ? stockCache[key] : undefined;
-        if(stockAnterior !== undefined && stockAnterior !== null && stockAnterior !== stockActual) {
-          const color = ((v.values&&v.values[0]&&v.values[0].es)||'Unico');
-          const mlId = v.sku && mapeo[v.sku+'_'+color];
-          if(mlId) {
-            try {
-              await axios.put('https://api.mercadolibre.com/items/'+mlId,
-                { available_quantity: stockActual },
-                { headers: { 'Authorization': 'Bearer '+mlToken, 'Content-Type': 'application/json' }}
-              );
-              console.log('TN->ML:', v.sku, color, stockAnterior, '->', stockActual);
-            } catch(e) { console.log('Error TN->ML:', v.sku, e.message); }
-          }
+      if(stockCache !== null && stockCache[key] !== undefined && stockCache[key] !== stockActual) {
+        const color = ((v.values&&v.values[0]&&v.values[0].es)||'Unico');
+        const mlId = v.sku && mapeo[v.sku+'_'+color];
+        if(mlId) {
+          try {
+            await axios.put('https://api.mercadolibre.com/items/'+mlId,
+              { available_quantity: stockActual },
+              { headers: { 'Authorization': 'Bearer '+mlToken, 'Content-Type': 'application/json' }}
+            );
+            console.log('TN->ML:', v.sku, color, stockCache[key], '->', stockActual);
+          } catch(e) { console.log('Error TN->ML:', v.sku, e.message); }
         }
       }
     }
   }
 
-  fs.writeFileSync(CACHE_FILE, JSON.stringify(newCache, null, 2), 'utf8');
+  // Guardar cache con version marker
+  fs.writeFileSync(CACHE_FILE, JSON.stringify({ v: 2, data: newCache }, null, 2), 'utf8');
 
   // Ventas ML -> TN
   const ultimaRevision = new Date(Date.now() - 3*60*1000).toISOString();
@@ -98,41 +103,19 @@ async function main() {
     }
   }
 
-  // Verificar eliminados cada 10 runs
-  if((runCount + 1) % 10 === 0) {
-    const mlIds = [...new Set(Object.values(mapeo))];
-    for(const mlId of mlIds) {
-      try {
-        const { data: item } = await axios.get('https://api.mercadolibre.com/items/'+mlId, { headers: { 'Authorization': 'Bearer '+mlToken }});
-        if(item.status==='closed'||item.status==='deleted') {
-          const keys = Object.keys(mapeo).filter(k=>mapeo[k]===mlId);
-          for(const k of keys) delete mapeo[k];
-          console.log('Eliminado:', mlId);
-        }
-      } catch(e) {
-        if(e.response&&e.response.status===404) {
-          const keys = Object.keys(mapeo).filter(k=>mapeo[k]===mlId);
-          for(const k of keys) delete mapeo[k];
-        }
-      }
-      await new Promise(r=>setTimeout(r,300));
-    }
-    fs.writeFileSync(MAPEO_FILE, JSON.stringify(mapeo, null, 2), 'utf8');
-  }
-
-  // Subir cache y mapeo a GitHub
+  // Subir cache a GitHub
   try {
     execSync('git config user.email "sync@positano.app"', { stdio: 'ignore' });
     execSync('git config user.name "Positano Sync"', { stdio: 'ignore' });
-    execSync('git add stock_cache.json mapeo.json', { stdio: 'ignore' });
-    const status = execSync('git status --porcelain').toString();
+    execSync('git add stock_cache.json', { stdio: 'ignore' });
+    const status = execSync('git status --porcelain stock_cache.json').toString();
     if(status.trim()) {
-      execSync('git commit -m "sync update"', { stdio: 'ignore' });
+      execSync('git commit -m "cache"', { stdio: 'ignore' });
       execSync('git push', { stdio: 'ignore' });
     }
   } catch(e) { console.log('Error git:', e.message); }
 
-  console.log('Sync completado. Run:', runCount + 1);
+  console.log('Sync completado');
 }
 
 main().catch(console.error);
