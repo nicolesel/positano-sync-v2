@@ -37,12 +37,16 @@ async function main() {
   const products = await fetchAllProducts();
   console.log('Productos:', products.length);
 
-  // Leer cache anterior
+  // Leer cache
   let stockCache = null;
+  let runCount = 0;
   try {
     if(fs.existsSync(CACHE_FILE)) {
       const raw = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
-      if(raw && raw.v === 2) stockCache = raw.data;
+      if(raw && raw.v === 2) {
+        stockCache = raw.data;
+        runCount = raw.runCount || 0;
+      }
     }
   } catch(e) {}
 
@@ -71,8 +75,8 @@ async function main() {
     }
   }
 
-  // Guardar cache con version marker
-  fs.writeFileSync(CACHE_FILE, JSON.stringify({ v: 2, data: newCache }, null, 2), 'utf8');
+  runCount++;
+  fs.writeFileSync(CACHE_FILE, JSON.stringify({ v: 2, runCount, data: newCache }, null, 2), 'utf8');
 
   // Ventas ML -> TN
   const ultimaRevision = new Date(Date.now() - 3*60*1000).toISOString();
@@ -103,19 +107,44 @@ async function main() {
     }
   }
 
-  // Subir cache a GitHub
+  // Verificar eliminados cada 10 runs
+  if(runCount % 10 === 0) {
+    console.log('Verificando eliminados...');
+    const mlIds = [...new Set(Object.values(mapeo))];
+    for(const mlId of mlIds) {
+      try {
+        const { data: item } = await axios.get('https://api.mercadolibre.com/items/'+mlId,
+          { headers: { 'Authorization': 'Bearer '+mlToken }});
+        if(item.status==='closed'||item.status==='deleted') {
+          const keys = Object.keys(mapeo).filter(k=>mapeo[k]===mlId);
+          for(const k of keys) delete mapeo[k];
+          console.log('Eliminado de ML:', mlId);
+        }
+      } catch(e) {
+        if(e.response&&e.response.status===404) {
+          const keys = Object.keys(mapeo).filter(k=>mapeo[k]===mlId);
+          for(const k of keys) delete mapeo[k];
+          console.log('No encontrado:', mlId);
+        }
+      }
+      await new Promise(r=>setTimeout(r,300));
+    }
+    fs.writeFileSync(MAPEO_FILE, JSON.stringify(mapeo, null, 2), 'utf8');
+  }
+
+  // Subir cambios a GitHub
   try {
     execSync('git config user.email "sync@positano.app"', { stdio: 'ignore' });
     execSync('git config user.name "Positano Sync"', { stdio: 'ignore' });
-    execSync('git add stock_cache.json', { stdio: 'ignore' });
-    const status = execSync('git status --porcelain stock_cache.json').toString();
+    execSync('git add stock_cache.json mapeo.json', { stdio: 'ignore' });
+    const status = execSync('git status --porcelain').toString();
     if(status.trim()) {
-      execSync('git commit -m "cache"', { stdio: 'ignore' });
+      execSync('git commit -m "sync update"', { stdio: 'ignore' });
       execSync('git push', { stdio: 'ignore' });
     }
   } catch(e) { console.log('Error git:', e.message); }
 
-  console.log('Sync completado');
+  console.log('Sync completado. Run:', runCount);
 }
 
 main().catch(console.error);
