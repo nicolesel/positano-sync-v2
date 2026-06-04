@@ -10,7 +10,9 @@ const MAPEO_FILE = 'mapeo.json';
 const CACHE_FILE = 'stock_cache.json';
 
 let mapeo = fs.existsSync(MAPEO_FILE) ? JSON.parse(fs.readFileSync(MAPEO_FILE, 'utf8')) : {};
-let stockCache = fs.existsSync(CACHE_FILE) ? JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8')) : null;
+let cacheData = fs.existsSync(CACHE_FILE) ? JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8')) : null;
+let stockCache = cacheData ? cacheData.stock : null;
+let runCount = cacheData ? (cacheData.runCount || 0) : 0;
 let mlToken = '';
 
 async function renovarTokenML() {
@@ -67,7 +69,8 @@ async function main() {
   }
 
   // Guardar nuevo cache
-  fs.writeFileSync(CACHE_FILE, JSON.stringify(newCache, null, 2), 'utf8');
+  runCount++;
+  fs.writeFileSync(CACHE_FILE, JSON.stringify({ stock: newCache, runCount }, null, 2), 'utf8');
 
   // Ventas ML -> TN
   const ultimaRevision = new Date(Date.now() - 3*60*1000).toISOString();
