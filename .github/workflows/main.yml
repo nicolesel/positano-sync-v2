@@ -1,8 +1,10 @@
 name: Positano Sync
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
+  repository_dispatch:
+    types: [sync]
 jobs:
   sync:
     runs-on: ubuntu-latest
