@@ -107,6 +107,27 @@ async function main() {
     }
   }
 
+  // Verificar productos eliminados de TN
+  const skusEnTN = new Set();
+  for(const p of products) {
+    for(const v of (p.variants||[])) {
+      if(v.sku) skusEnTN.add(v.sku);
+    }
+  }
+  for(const [skuColor, mlId] of Object.entries(mapeo)) {
+    const sku = skuColor.split('_')[0];
+    if(!skusEnTN.has(sku)) {
+      try {
+        await axios.put('https://api.mercadolibre.com/items/'+mlId,
+          { status: 'closed' },
+          { headers: { 'Authorization': 'Bearer '+mlToken, 'Content-Type': 'application/json' }}
+        );
+        delete mapeo[skuColor];
+        console.log('Cerrado en ML por eliminacion en TN:', skuColor, mlId);
+      } catch(e) { console.log('Error cerrando:', mlId, e.message); }
+    }
+  }
+
   // Verificar eliminados cada 10 runs
   if(runCount % 10 === 0) {
     console.log('Verificando eliminados...');
