@@ -50,7 +50,7 @@ async function main() {
       newCache[key] = stockActual;
 
       if(stockCache !== null) {
-        const stockAnterior = stockCache[key];
+        const stockAnterior = stockCache ? stockCache[key] : undefined;
         if(stockAnterior !== undefined && stockAnterior !== stockActual) {
           const color = ((v.values&&v.values[0]&&v.values[0].es)||'Unico');
           const mlId = v.sku && mapeo[v.sku+'_'+color];
