@@ -165,6 +165,7 @@ async function sincronizarStock() {
             try {
               await axios.put('https://api.mercadolibre.com/items/'+mlId, { available_quantity:stockActual }, { headers: { 'Authorization':'Bearer '+mlToken, 'Content-Type':'application/json' }});
               logEntry.actualizaciones.push('TN->ML: '+v.sku+' '+color+' '+stockAnterior+'->'+stockActual);
+          agregarNotif('Stock cambiado en TN: '+v.sku+' '+color+' -> '+stockActual);
               console.log('TN->ML:', v.sku, color, stockAnterior, '->', stockActual);
             } catch(e) { console.log('Error TN->ML:', e.message); }
           }

@@ -2,10 +2,10 @@ const axios = require('axios');
 const fs = require('fs');
 const { execSync } = require('child_process');
 
-const STORE_ID = '4784990';
-const TN_TOKEN = '2ac2da90bccc350d041d1fbaddd5f3e664f2e22f';
-const ML_CLIENT_ID = '7264088506318196';
-const ML_CLIENT_SECRET = 'sXlSgTEWWRGrOMHGDPg3JiMPSFSQUBAV';
+const STORE_ID = process.env.STORE_ID || '4784990';
+const TN_TOKEN = process.env.TN_TOKEN || '';
+const ML_CLIENT_ID = process.env.ML_CLIENT_ID || '';
+const ML_CLIENT_SECRET = process.env.ML_CLIENT_SECRET || '';
 const MAPEO_FILE = 'mapeo.json';
 const CACHE_FILE = 'stock_cache.json';
 
@@ -60,6 +60,8 @@ async function main() {
       newCache[key] = stockActual;
 
       if(stockCache !== null && stockCache[key] !== undefined && stockCache[key] !== stockActual) {
+        console.log('CAMBIO:', v.sku, stockCache[key], '->', stockActual);
+        console.log('CAMBIO DETECTADO:', v.sku, stockCache[key], '->', stockActual);
         const color = ((v.values&&v.values[0]&&v.values[0].es)||'Unico');
         const mlId = v.sku && mapeo[v.sku+'_'+color];
         if(mlId) {

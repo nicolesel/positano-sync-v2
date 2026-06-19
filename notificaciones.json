@@ -1,1 +1,502 @@
-[]
+[
+  {
+    "fecha": "19/6/2026, 11:14:52",
+    "msg": "Stock cambiado en TN: 31214 rosa -> 1",
+    "leida": true
+  },
+  {
+    "fecha": "19/6/2026, 11:12:52",
+    "msg": "Stock cambiado en TN: BB240 negro -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "19/6/2026, 11:10:52",
+    "msg": "Stock cambiado en TN: BB240 negro -> 1",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 09:57:47",
+    "msg": "Stock cambiado en TN: 31060 marron -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:05",
+    "msg": "Stock cambiado en TN: 31181 beige -> 4",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:05",
+    "msg": "Stock cambiado en TN: 31183 beige -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:04",
+    "msg": "Stock cambiado en TN: 31185 rosa -> 7",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:04",
+    "msg": "Stock cambiado en TN: 31196 beige -> 6",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:04",
+    "msg": "Stock cambiado en TN: 31196 negro -> 19",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:03",
+    "msg": "Stock cambiado en TN: 18794 negro -> 6",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:02",
+    "msg": "Stock cambiado en TN: 31155 beige -> 6",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:02",
+    "msg": "Stock cambiado en TN: 31164 beige -> 16",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:02",
+    "msg": "Stock cambiado en TN: 31213 gris -> 13",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:01",
+    "msg": "Stock cambiado en TN: 31215 gris -> 3",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:01",
+    "msg": "Stock cambiado en TN: 31219 lila -> 10",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:00",
+    "msg": "Stock cambiado en TN: 31225 verde -> 1",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:00",
+    "msg": "Stock cambiado en TN: 31225 rosa -> 7",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:32:00",
+    "msg": "Stock cambiado en TN: 67.T4260 beige -> 2",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:31:59",
+    "msg": "Stock cambiado en TN: 67.E809 negro -> 1",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:31:58",
+    "msg": "Stock cambiado en TN: 29194 negro -> 13",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:31:57",
+    "msg": "Stock cambiado en TN: 31060 marron -> 1",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:31:56",
+    "msg": "Stock cambiado en TN: 28306 negro -> 1",
+    "leida": true
+  },
+  {
+    "fecha": "16/6/2026, 08:31:56",
+    "msg": "Stock cambiado en TN: 29034 negro -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "12/6/2026, 03:00:47",
+    "msg": "Stock cambiado en TN: SC0154Z marron -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "12/6/2026, 12:42:46",
+    "msg": "Stock cambiado en TN: 31214 gris -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "12/6/2026, 11:17:06",
+    "msg": "Error al publicar: Bolso Head",
+    "leida": true
+  },
+  {
+    "fecha": "12/6/2026, 11:16:08",
+    "msg": "Eliminado de ML: Bolso Head",
+    "leida": true
+  },
+  {
+    "fecha": "12/6/2026, 11:15:13",
+    "msg": "Publicado en ML: Bolso Head (1/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "12/6/2026, 11:13:36",
+    "msg": "Error al publicar: Bolso Head",
+    "leida": true
+  },
+  {
+    "fecha": "12/6/2026, 11:00:39",
+    "msg": "Eliminado de ML: Bolso Head",
+    "leida": true
+  },
+  {
+    "fecha": "12/6/2026, 10:59:53",
+    "msg": "Publicado en ML: Bolso Head (1/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "12/6/2026, 10:58:30",
+    "msg": "Publicado en ML: Morral Peyton Hombre (1/1 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "12/6/2026, 10:57:48",
+    "msg": "Error al publicar: Bolso Head",
+    "leida": true
+  },
+  {
+    "fecha": "12/6/2026, 10:57:00",
+    "msg": "Error al publicar: Bolso Head",
+    "leida": true
+  },
+  {
+    "fecha": "12/6/2026, 10:56:11",
+    "msg": "Eliminado de ML: Bolso Head",
+    "leida": true
+  },
+  {
+    "fecha": "12/6/2026, 10:55:26",
+    "msg": "Actualizado en ML: Bolso Head (gris, rosa)",
+    "leida": true
+  },
+  {
+    "fecha": "11/6/2026, 01:43:42",
+    "msg": "Publicado en ML: Cinturón dede simil cuero con remaches Zaphir (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "11/6/2026, 01:42:56",
+    "msg": "Eliminado de ML: Cinturón dede simil cuero con remaches Zaphir",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:21:27",
+    "msg": "Publicado en ML: Cinturón de simil cuero con remaches Zaphir (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:21:12",
+    "msg": "Publicado en ML: Cinturón de simil cuero con ojalillos y remaches (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:20:56",
+    "msg": "Publicado en ML: Cinturón tipo faja de simil cuero con ojalillos y remaches Zaphir (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:20:41",
+    "msg": "Publicado en ML: Cinturón de simil cuero gamuzado con remaches Zaphir (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:20:26",
+    "msg": "Publicado en ML: Cinturón de similcuero con remaches Zaphir (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:20:11",
+    "msg": "Stock cambiado en TN: 31217 rosa -> 1",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:20:11",
+    "msg": "Stock cambiado en TN: 31217 beige -> 1",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:20:10",
+    "msg": "Publicado en ML: Cinturón de simil cuero con remaches Zaphir (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:19:54",
+    "msg": "Publicado en ML: Cinturón de similcuero con remaches Zaphir (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:19:39",
+    "msg": "Publicado en ML: Cinturón de simil cuero con remaches Zaphir (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:19:24",
+    "msg": "Publicado en ML: Cinturón de simil cuero con ojalillos Zaphir (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:19:09",
+    "msg": "Publicado en ML: Cinturón de simil cuero gamuzado con pasador estrella Zaphir (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:18:53",
+    "msg": "Publicado en ML: Cinturón de simil cuero Zaphir (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:18:37",
+    "msg": "Publicado en ML: Cinturón de simil cuero con ojalillos y remaches Zaphir (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:18:22",
+    "msg": "Publicado en ML: Cinturón dede simil cuero con remaches Zaphir (1/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:18:07",
+    "msg": "Error al publicar: Bolso Travel Tech",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:17:54",
+    "msg": "Publicado en ML: Bolso Head (2/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:17:34",
+    "msg": "Publicado en ML: Billetera Trendy (1/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:17:17",
+    "msg": "Publicado en ML: Fichero Doble Trendy (3/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:17:00",
+    "msg": "Publicado en ML: Fichero Trendy (3/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:16:43",
+    "msg": "Publicado en ML: Billetera Trendy (2/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:16:26",
+    "msg": "Publicado en ML: Fichera Trendy (3/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:16:09",
+    "msg": "Publicado en ML: Porta Computadora Funda Travel Tech (1/1 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:15:56",
+    "msg": "Publicado en ML: Ruana Trendy (3/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:15:38",
+    "msg": "Publicado en ML: Ruana Trendy (3/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:15:20",
+    "msg": "Publicado en ML: Guante Oreiro Love (3/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:15:01",
+    "msg": "Publicado en ML: Guante Oreiro Love (3/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:14:43",
+    "msg": "Publicado en ML: Guante Oreiro Love (3/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:14:26",
+    "msg": "Publicado en ML: Guante Oreiro Love (3/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:14:08",
+    "msg": "Publicado en ML: GORRO AMAYRA (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:13:52",
+    "msg": "Publicado en ML: GORRO AMAYRA (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:13:38",
+    "msg": "Publicado en ML: Riñonera Oreiro (3/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:13:21",
+    "msg": "Publicado en ML: Cartera Barbara (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:13:06",
+    "msg": "Publicado en ML: Cartera Barbara (3/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:12:49",
+    "msg": "Publicado en ML: Cartera Barbara (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:12:35",
+    "msg": "Publicado en ML: Cartera Barbara (2/2 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 04:12:20",
+    "msg": "Publicado en ML: Cartera Barbara (1/1 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 03:57:36",
+    "msg": "Eliminado de ML: Guante Oreiro Love",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 03:57:23",
+    "msg": "Eliminado de ML: Guante Oreiro Love",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 03:56:40",
+    "msg": "Eliminado de ML: Guante Oreiro Love",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 03:55:53",
+    "msg": "Eliminado de ML: Guante Oreiro Love",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 02:35:24",
+    "msg": "Eliminado de ML: Fichero Doble Trendy",
+    "leida": true
+  },
+  {
+    "fecha": "10/6/2026, 02:33:30",
+    "msg": "Eliminado de ML: Fichera Trendy",
+    "leida": true
+  },
+  {
+    "fecha": "9/6/2026, 04:15:50",
+    "msg": "Actualizado en ML: BILLETERA AMAYRA (gris)",
+    "leida": true
+  },
+  {
+    "fecha": "9/6/2026, 04:15:02",
+    "msg": "Actualizado en ML: BILLETERA AMAYRA (gris)",
+    "leida": true
+  },
+  {
+    "fecha": "9/6/2026, 04:13:16",
+    "msg": "Actualizado en ML: BILLETERA AMAYRA (gris)",
+    "leida": true
+  },
+  {
+    "fecha": "9/6/2026, 03:46:09",
+    "msg": "Publicado en ML: Fichero Doble Trendy (3/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "9/6/2026, 03:42:32",
+    "msg": "Eliminado de ML: Fichero Doble Trendy",
+    "leida": true
+  },
+  {
+    "fecha": "9/6/2026, 02:58:28",
+    "msg": "Stock cambiado en TN: 31148 gris -> 6",
+    "leida": true
+  },
+  {
+    "fecha": "9/6/2026, 02:58:27",
+    "msg": "Stock cambiado en TN: 31148 negro -> 13",
+    "leida": true
+  },
+  {
+    "fecha": "9/6/2026, 02:58:27",
+    "msg": "Stock cambiado en TN: 31213 verde -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "9/6/2026, 02:58:26",
+    "msg": "Stock cambiado en TN: 31214 gris -> 8",
+    "leida": true
+  },
+  {
+    "fecha": "9/6/2026, 01:41:55",
+    "msg": "Publicado en ML: Fichero Doble Trendy (3/3 colores)",
+    "leida": true
+  },
+  {
+    "fecha": "8/6/2026, 03:48:42",
+    "msg": "Stock cambiado en TN: 62.p5007 Unico -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "8/6/2026, 03:48:42",
+    "msg": "Stock cambiado en TN: 62.p5002 gris -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "8/6/2026, 03:48:41",
+    "msg": "Stock cambiado en TN: 62.p5002 azul -> 2",
+    "leida": true
+  },
+  {
+    "fecha": "8/6/2026, 03:48:41",
+    "msg": "Stock cambiado en TN: 62.p5002 negro -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "8/6/2026, 02:40:42",
+    "msg": "Stock cambiado en TN: 31218 bordo -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "8/6/2026, 02:40:42",
+    "msg": "Stock cambiado en TN: 31218 azul -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "8/6/2026, 02:40:42",
+    "msg": "Stock cambiado en TN: 31218 blanco -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "8/6/2026, 02:36:41",
+    "msg": "Stock cambiado en TN: 31481 Unico -> 0",
+    "leida": true
+  },
+  {
+    "fecha": "8/6/2026, 02:32:40",
+    "msg": "Stock cambiado en TN: 28306 negro -> 0",
+    "leida": true
+  }
+]
