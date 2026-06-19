@@ -20,6 +20,10 @@ jobs:
       - run: npm install
       - run: node sync.js
         env:
+          - run: node sync.js
+        env:
           ML_TOKEN: ${{ secrets.ML_TOKEN }}
           TN_TOKEN: ${{ secrets.TN_TOKEN }}
           STORE_ID: ${{ secrets.STORE_ID }}
+          ML_CLIENT_ID: ${{ secrets.ML_CLIENT_ID }}
+          ML_CLIENT_SECRET: ${{ secrets.ML_CLIENT_SECRET }}
