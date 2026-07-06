@@ -92,10 +92,13 @@ async function main() {
       const qty = item.quantity;
       const skuEntry = Object.entries(mapeo).find(([k,v]) => v===mlId);
       if(skuEntry) {
-        const sku = skuEntry[0].split('_')[0];
+        const skuColor = skuEntry[0];
+        const sku = skuColor.split('_')[0];
+        const color = skuColor.split('_').slice(1).join('_').toLowerCase();
         const p = products.find(x => x.variants&&x.variants.some(v=>v.sku===sku));
         if(p) {
-          const variant = p.variants.find(v=>v.sku===sku);
+          const variant = p.variants.find(v=>v.sku===sku && ((v.values&&v.values[0]&&v.values[0].es)||'Unico').toLowerCase()===color)
+            || p.variants.find(v=>v.sku===sku);
           if(variant) {
             const nuevoStock = Math.max(0,(parseInt(variant.stock)||0)-qty);
             await axios.put('https://api.tiendanube.com/v1/'+STORE_ID+'/products/'+p.id+'/variants/'+variant.id,
