@@ -81,12 +81,16 @@ async function main() {
   fs.writeFileSync(CACHE_FILE, JSON.stringify({ v: 2, runCount, data: newCache }, null, 2), 'utf8');
 
   // Ventas ML -> TN
-  const ultimaRevision = new Date(Date.now() - 3*60*1000).toISOString();
+  const PROCESSED_FILE = 'processed_orders.json';
+  let processedOrders = fs.existsSync(PROCESSED_FILE) ? JSON.parse(fs.readFileSync(PROCESSED_FILE,'utf8')) : [];
+  const ultimaRevision = new Date(Date.now() - 10*60*1000).toISOString();
   const { data: ordersML } = await axios.get(
     'https://api.mercadolibre.com/orders/search?seller=303503376&order.status=paid&order.date_created.from='+ultimaRevision,
     { headers: { 'Authorization': 'Bearer '+mlToken }}
   );
+  let newProcessed = false;
   for(const order of (ordersML.results||[])) {
+    if(processedOrders.includes(String(order.id))) continue;
     for(const item of order.order_items) {
       const mlId = item.item.id;
       const qty = item.quantity;
@@ -106,6 +110,8 @@ async function main() {
               { headers: { 'Authentication': 'bearer '+TN_TOKEN, 'User-Agent': 'PositanoSync/1.0' }}
             );
             console.log('Venta ML:', sku, '->', nuevoStock);
+            processedOrders.push(String(order.id));
+            newProcessed = true;
           }
         }
       }
@@ -131,6 +137,13 @@ async function main() {
         console.log('Cerrado en ML por eliminacion en TN:', skuColor, mlId);
       } catch(e) { console.log('Error cerrando:', mlId, e.message); }
     }
+  }
+
+  // Guardar ordenes procesadas
+  if(newProcessed) {
+    if(processedOrders.length > 500) processedOrders = processedOrders.slice(-500);
+    fs.writeFileSync(PROCESSED_FILE, JSON.stringify(processedOrders), 'utf8');
+    try { execSync('git add processed_orders.json', {stdio:'ignore'}); } catch(e) {}
   }
 
   // Verificar eliminados cada 10 runs
