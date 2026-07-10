@@ -83,7 +83,7 @@ async function main() {
   // Ventas ML -> TN
   const PROCESSED_FILE = 'processed_orders.json';
   let processedOrders = fs.existsSync(PROCESSED_FILE) ? JSON.parse(fs.readFileSync(PROCESSED_FILE,'utf8')) : [];
-  const ultimaRevision = new Date(Date.now() - 10*60*1000).toISOString();
+  const ultimaRevision = new Date(Date.now() - 2*60*60*1000).toISOString();
   const { data: ordersML } = await axios.get(
     'https://api.mercadolibre.com/orders/search?seller=303503376&order.status=paid&order.date_created.from='+ultimaRevision,
     { headers: { 'Authorization': 'Bearer '+mlToken }}
